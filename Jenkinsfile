@@ -14,7 +14,8 @@ podTemplate(yaml: '''
   node(POD_LABEL) {
 
   stage('Start a gradle project') {
-     container('gradle') {
+      git 'https://github.com/vishalshende83/week8'
+      container('gradle') {
         stage('Start Calculator') {
 		sh '''
                 echo 'Start Calculator'
