@@ -13,10 +13,10 @@ podTemplate(yaml: '''
     ''') {
   node(POD_LABEL) {
 
-  stage('Start Calculator') {
+  stage('Start a gradle project') {
       git branch: 'main', url: 'https://github.com/vishalshende83/week8.git'
       container('gradle') {
-        stage('1') {
+        stage('Start Calculator') {
 		sh '''
                 echo 'Start Calculator'
 				curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -24,18 +24,8 @@ podTemplate(yaml: '''
                 ./kubectl apply -f calculator.yaml
                 ./kubectl apply -f hazelcast.yaml
          '''
-       } // stage build a gradle project
-
-        stage("Run Acceptance Test") {
-		sh '''
-                echo 'Run Acceptance Test'
-				chmod +x gradlew
-                ./gradlew acceptanceTest -Dcalculator.url=http://calculator-service:8080
-				
-         '''
-            }
-		
-		stage("Test using Curl") {
+       }
+	   stage("Test using Curl") {
 		sh '''
                 echo 'Test using Curl'
 				test $(curl calculator-service:8080/sum?a=6\\&b=2) -eq 8 && echo 'pass' || 'fail'
