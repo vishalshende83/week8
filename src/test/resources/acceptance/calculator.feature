@@ -4,6 +4,6 @@ Feature: Calculator
     When the calculator sums them
     Then I receive 3 as a result
   Scenario: Divide two numbers
-    Given I have two numbers: 10 and 5
+    Given I have two of the numbers: 10 and 5
     When the calculator divides them
-    Then I receive 2 as a result
+    Then I receive the answer 2 as a result
