@@ -34,7 +34,7 @@ public class StepDefinitions {
         assertEquals(expectedResult, result);
     }
 
-    @Given("^I have two of the numbers: (.*) and (.*)$")
+    @Given("^I have number (.*) and (.*)$")
     public void i_have_two_of_the_numbers(String a, String b) throws Throwable {
         this.a = a;
         this.b = b;
