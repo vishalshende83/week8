@@ -34,8 +34,8 @@ public class StepDefinitions {
         assertEquals(expectedResult, result);
     }
 
-    @Given("^I have a dividend and divisor: (.*) and (.*)$")
-    public void i_have_a_dividend_and_divisor(String a, String b) throws Throwable {
+    @Given("^I have two of the numbers: (.*) and (.*)$")
+    public void i_have_two_of_the_numbers(String a, String b) throws Throwable {
         this.a = a;
         this.b = b;
     }
@@ -46,8 +46,8 @@ public class StepDefinitions {
         result = restTemplate.getForObject(url, String.class);
     }
 
-    @Then("^the quotient is (.*)$")
-    public void the_quotient_is(String expectedResult) throws Throwable {
+    @Then("^the result is (.*)$")
+    public void the_result_is(String expectedResult) throws Throwable {
         assertEquals(expectedResult, result);
     }
 
